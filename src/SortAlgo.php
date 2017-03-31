@@ -11,9 +11,13 @@ class SortAlgo {
      * Sort algorithm.
      *
      * @param array $items   The unsorted array.
+     *
+     * @return array
      */
     public function sort(array $items) {
+        $sorted = $items;
 
+        return $sorted;
     }
 }
 
