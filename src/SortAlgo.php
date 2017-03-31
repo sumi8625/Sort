@@ -14,16 +14,23 @@ class SortAlgo {
      *
      * @return array
      */
-    public function sort(array $items) {
+    public function sort(array $items)
+    {
+        do {
+            $isCheckNecessary = false;
 
-        $sorted = $items;
+            for ($i = 1; $i < count($items); $i++) {
+                if ($items[$i - 1] > $items[$i]) {
+                    $x             = $items[$i];
+                    $items[$i]     = $items[$i - 1];
+                    $items[$i - 1] = $x;
 
-        if (count($items) === 2 && $items[0] > $items[1]) {
-            $sorted[0] = $items[1];
-            $sorted[1] = $items[0];
-        }
+                    $isCheckNecessary = true;
+                }
+            }
+        } while ($isCheckNecessary);
 
-        return $sorted;
+        return $items;
     }
 }
 
