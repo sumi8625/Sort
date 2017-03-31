@@ -16,15 +16,11 @@ class SortAlgo {
      */
     public function sort(array $items)
     {
-        do {
-            $isCheckNecessary = false;
-
-            for ($i = 1; $i < count($items); $i++) {
-                if ($this->swap($items, $i, ($i-1))) {
-                    $isCheckNecessary = true;
-                }
+        for ($i = 1; $i < count($items); $i++) {
+            if ($this->swap($items, $i, ($i-1))) {
+                $items = $this->sort($items);
             }
-        } while ($isCheckNecessary);
+        }
 
         return $items;
     }
