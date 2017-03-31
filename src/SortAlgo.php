@@ -15,7 +15,13 @@ class SortAlgo {
      * @return array
      */
     public function sort(array $items) {
+
         $sorted = $items;
+
+        if (count($items) === 2 && $items[0] > $items[1]) {
+            $sorted[0] = $items[1];
+            $sorted[1] = $items[0];
+        }
 
         return $sorted;
     }
