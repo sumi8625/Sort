@@ -20,17 +20,37 @@ class SortAlgo {
             $isCheckNecessary = false;
 
             for ($i = 1; $i < count($items); $i++) {
-                if ($items[$i - 1] > $items[$i]) {
-                    $x             = $items[$i];
-                    $items[$i]     = $items[$i - 1];
-                    $items[$i - 1] = $x;
-
+                if ($this->swap($items, $i, ($i-1))) {
                     $isCheckNecessary = true;
                 }
             }
         } while ($isCheckNecessary);
 
         return $items;
+    }
+
+    /**
+     * Swaps the given elements of the given array.
+     *
+     * @param array $array
+     * @param       $greaterIndex
+     * @param       $smallerIndex
+     *
+     * @return bool
+     */
+    private function swap(array &$array, $greaterIndex, $smallerIndex)
+    {
+        $isSwapped = false;
+
+        if ($array[$smallerIndex] > $array[$greaterIndex]) {
+            $temporary            = $array[$greaterIndex];
+            $array[$greaterIndex] = $array[$smallerIndex];
+            $array[$smallerIndex] = $temporary;
+
+            $isSwapped = true;
+        }
+
+        return $isSwapped;
     }
 }
 
